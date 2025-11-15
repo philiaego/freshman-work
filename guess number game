@@ -1,0 +1,41 @@
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+using namespace std;
+	
+int main()
+{
+	srand((time(0)));//生成随机数的种子
+
+	int guessnum = rand()%100+1;
+	/*
+		生成m到n范围的随机数
+		r=rand（）%（n-m+1）+m
+	*/
+	//定义一个数表示猜测剩下的数字
+	int count = 5;
+	while (count>0) {
+
+		cout << "请猜测一个数" << endl;
+		int Inputnum;
+		cin >> Inputnum;
+		if (Inputnum == guessnum)
+		{
+			cout << "恭喜你，猜对了" << endl;
+			break;
+		}
+		else if (Inputnum > guessnum) {
+			cout << "猜大了" << endl;
+			count--;
+			cout << "你还剩余" << count << "次机会" << endl;
+		}
+		else {
+			cout << "猜小了" << endl;
+			count--;
+			cout << "你还剩余" << count << "次机会" << endl;
+		}
+
+	}
+	if (count <= 0)cout << "正确答案是" << guessnum << endl;
+	return 0;
+}
